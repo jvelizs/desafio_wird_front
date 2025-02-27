@@ -10,13 +10,13 @@ interface AddButtonProps {
 }
 
 const AddButton: FC<AddButtonProps>= ({pokemon}) => {
-    const dispatch = useDispatch()
-    const PokemonReadyToFight = useSelector((state: RootState) => state.pokemon.pokemonReadyToFight)
+    const dispatch = useDispatch() // Dispatch para poder setear las variables de estado
+    const PokemonReadyToFight = useSelector((state: RootState) => state.pokemon.pokemonReadyToFight) // Listado de los pokemones listo para el combate
 
     const HandleButtonAdd = (event: React.MouseEvent<HTMLButtonElement>) => {
-        event.stopPropagation();
-        if(!PokemonReadyToFight.includes(pokemon)){
-            dispatch(setPokemonReadyToFight(pokemon))
+        event.stopPropagation(); // Se detiene la propagación del estado para que no redireccione a los stats al clickear el boton de agregado
+        if(!PokemonReadyToFight.filter((pokemonInlist) => pokemonInlist.id !== pokemon.id)){ // En caso de no estar agregar a la lista, otro no hace nada. (Mejora agregar un alert)
+            dispatch(setPokemonReadyToFight(pokemon)) // Se agrega el pokemon a la lista en redux
         }
     };
     return (

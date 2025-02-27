@@ -23,12 +23,12 @@ const Pagination: FC<PaginationProps> = ({totalItems, itemsPerPage}) => {
 
     const HandleBotonNav = (page: number) =>{
         dispatch(setPage(page)); // Se setea el currentPage
-        let limit = itemsPerPage; // Siento el limite de items 
-        const offset = limit * (page-1);
-        if(offset >= 150 ){
-            limit = 1;
+        let limit = itemsPerPage; // Siento el limite de items por pagina
+        const offset = limit * (page-1); // Se calcula el offset para la consulta a la api, con esto podemos decir que queremos los 30 siguientes.
+        if(offset >= 150 ){ // En caso de que el offset sea mayor o igual a 150
+            limit = 1; // Devolvemos 1 para obtener al pokemon que nos falta al ser 151
         }
-        dispatch(fetchData( {limit, offset} ))
+        dispatch(fetchData( {limit, offset} ))// Se llama a al fetchdata para setear los pokemones que se deben mostrar
     }
 
   return (

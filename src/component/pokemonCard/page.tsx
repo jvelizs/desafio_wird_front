@@ -6,7 +6,7 @@ import { Pokemon } from '@/interfaces/interfaces';
 interface PokemonCardProps{
     pokemon: Pokemon;
 }
-
+// Funcion que se encarga de mostrar las imagenes en la grilla como cartas, además redirige hacia los stats
 const PokemonCard: FC<PokemonCardProps> = ({pokemon}) => {
   return (
     <Link href={`pokemons/${pokemon.name}`}>

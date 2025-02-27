@@ -3,7 +3,7 @@ import pokemonReducer from './Pokemonslice'
 
 export const store = configureStore({
   reducer: {
-    pokemon: pokemonReducer,
+    pokemon: pokemonReducer, // Reducer con las variables de estado.
   },
 })
 
